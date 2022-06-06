@@ -1,23 +1,20 @@
-const errorMessage = 0;
-const maxLength = 140;
-let stringLength;
-
 function random (firstNumber, lastNumber) {
-  if (firstNumber>=0 && lastNumber>=0) {
-    const rand = firstNumber - 0.5 + Math.random() * (lastNumber - firstNumber + 1);
-    return Math.round(rand);
-  } return (errorMessage);
-
+  if (firstNumber>lastNumber) {
+    const temp = firstNumber;
+    firstNumber = lastNumber;
+    lastNumber = temp;
+  }
+  const rand = firstNumber - 0.5 + Math.random() * (lastNumber - firstNumber + 1);
+  return Math.round(rand);
 }
 
 random (1,10);
 
-function checkString () {
-  if (stringLength<=maxLength) {
+function checkString (text, maxLength) {
+  if (text.length<=maxLength) {
     return true;
   }
   return false;
-
 }
 
-checkString ();
+checkString ('Cтрока на проверку', 140);
