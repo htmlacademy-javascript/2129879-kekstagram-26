@@ -69,7 +69,7 @@ const newComment = Array.from({length: AMOUNT_OF_CARDS}, getComment);
 
 const getPost = () => ({
   id: getId('posts'),
-  url: `photos/${getId('posts')}.jpg`, //проверить в цикле!
+  url: `photos/${getId('posts')}.jpg`,
   description: getRandomArrayElement(DESCRIPTION),
   likes: getRandomPositiveInteger (15, 200),
   comments: getRandomArrayElement(newComment),
