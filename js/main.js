@@ -8,6 +8,10 @@ const getRandomPositiveInteger = (min, max) => {
 const checkStringLength = (string, length) => string.length <= length;
 
 const AMOUNT_OF_CARDS = 25;
+const AmountOfComments = {
+  MIN: 1,
+  MAX: 5,
+};
 
 const NAMES = [
   'Вася',
@@ -56,7 +60,7 @@ const getId = (key) => {
   return startId[key];
 };
 
-const getRandomArrayElement = (array) => array[getRandomPositiveInteger(0, array.length-1)];
+const getRandomArrayElement = (arr) => arr[getRandomPositiveInteger(0, arr.length-1)];
 
 const getComment = () => ({
   id: getId('comments'),
@@ -65,19 +69,24 @@ const getComment = () => ({
   name: getRandomArrayElement(NAMES),
 });
 
-const newComment = Array.from({length: AMOUNT_OF_CARDS}, getComment);
+const getRandomComments = () => {
+  Array.from({length: getRandomPositiveInteger (AmountOfComments.MIN, AmountOfComments.MAX)}, getComment);
+};
 
-const getPost = () => ({
-  id: getId('posts'),
-  url: `photos/${getId('posts')}.jpg`,
-  description: getRandomArrayElement(DESCRIPTION),
-  likes: getRandomPositiveInteger (15, 200),
-  comments: getRandomArrayElement(newComment),
-});
+const getPost = () => {
+  const idStorage = getId('posts');
+  return {
+    id: idStorage,
+    url: `photos/${idStorage}.jpg`,
+    description: getRandomArrayElement(DESCRIPTION),
+    likes: getRandomPositiveInteger (15, 200),
+    comments: getRandomComments(),
+  };
+};
 
-const newPost = Array.from({length: AMOUNT_OF_CARDS}, getPost);
+const newPosts = Array.from({length: AMOUNT_OF_CARDS}, getPost);
 
-const calmLinter = () => newPost;
+const calmLinter = () => newPosts;
 
 calmLinter();
 
