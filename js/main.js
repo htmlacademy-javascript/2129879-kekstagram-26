@@ -69,9 +69,7 @@ const getComment = () => ({
   name: getRandomArrayElement(NAMES),
 });
 
-const getRandomComments = () => {
-  Array.from({length: getRandomPositiveInteger (AmountOfComments.MIN, AmountOfComments.MAX)}, getComment);
-};
+const getRandomComments = () => Array.from({length: getRandomPositiveInteger (AmountOfComments.MIN, AmountOfComments.MAX)}, getComment);
 
 const getPost = () => {
   const idStorage = getId('posts');
