@@ -1,4 +1,4 @@
-import { newPosts } from './data';
+import { newPosts } from './data.js';
 
 const pictureTemplate = document.querySelector('#picture')
   .content

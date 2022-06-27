@@ -1,4 +1,4 @@
 //import { newPosts } from './data';
-import './miniatures';
+import './miniatures.js';
 
 //newPosts();
